@@ -9,7 +9,8 @@ Vector    = require "extra_libs.hump.vector"
 --CLASSES
 
 require "classes.primitive"
-Color = require "classes.color.color"
+Color   = require "classes.color.color"
+Bucket  = require "classes.bucket"
 
 --MY MODULES
 Util      = require "util"

@@ -39,6 +39,7 @@ function setup.config()
 
     --IMAGES--
     IMG = { --Table containing all the images
+      bucket = love.graphics.newImage("assets/images/bucket.png")
     }
 
     --AUDIO--

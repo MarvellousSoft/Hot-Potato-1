@@ -4,13 +4,15 @@ local state = {}
 
 --LOCAL VARIABLES--
 
-local switch --If gamestate should change to another one
-
 --LOCAL FUNCTIONS--
 
 --STATE FUNCTIONS--
 
 function state:enter()
+
+	--Create bucket and add it to layer 2 on draw tables
+	local bucket = Bucket(100, 200)
+	bucket:addElement("L2", nil, "the_bucket")
 
 end
 
@@ -23,9 +25,7 @@ end
 
 function state:update(dt)
 
-	if switch == "menu" then
-		--Gamestate.switch(GS.MENU)
-	end
+	Util.updateId(dt, "the_bucket")
 
 	Util.destroyAll()
 
