@@ -11,7 +11,7 @@ local state = {}
 function state:enter()
 
 	--Create bucket and add it to layer 2 on draw tables
-	local bucket = Bucket(100, 200)
+	local bucket = Bucket(100, O_WIN_H * .9)
 	bucket:addElement("L2", nil, "the_bucket")
 
 end
@@ -26,6 +26,7 @@ end
 function state:update(dt)
 
 	Util.updateId(dt, "the_bucket")
+	Util.updateSubtype(dt, "auto_update")
 
 	Util.destroyAll()
 
@@ -33,7 +34,7 @@ end
 
 function state:draw()
 
-    Draw.allTables()
+	Draw.allTables()
 
 end
 
@@ -42,7 +43,7 @@ function state:keypressed(key)
 	if key == "r" then
 		switch = "MENU"
 	else
-    	Util.defaultKeyPressed(key)
+		Util.defaultKeyPressed(key)
 	end
 
 end
