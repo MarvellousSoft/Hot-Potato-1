@@ -11,6 +11,9 @@ Vector    = require "extra_libs.hump.vector"
 require "classes.primitive"
 Color   = require "classes.color.color"
 Bucket  = require "classes.bucket"
+FadingText = require "classes.fading_text"
+Drop    = require "classes.drop"
+
 
 --MY MODULES
 Util      = require "util"

@@ -1,26 +1,18 @@
 --Bucket Class
 
-local FadingText = require "classes/fading_text"
-
--- gravity
-local g = 1000
-
 local Bucket = Class{
 	__includes = {ELEMENT, POS},
 	init = function(self, x, y)
 		ELEMENT.init(self)
 		POS.init(self, x, y)
 
-		self.floor_y = y
-
-		self.speedv = 200
-
+		self.speed_x = 200
 		self.speed_y = 0
 		self.jumps_left = -1
-
 		self.on_floor = true
-
 		self.moving = false
+
+		self.image = IMG.empty_bucket
 
 		self.tp = "bucket"
 	end
@@ -28,12 +20,12 @@ local Bucket = Class{
 
 -- return a x position next to the object
 local function x_near(self)
-	return self.pos.x + love.math.random(-20, IMG.bucket:getWidth() + 20)
+	return self.pos.x + love.math.random(-20, self.image:getWidth() + 20)
 end
 
 -- return a y position next to the object (not below)
 local function y_near(self)
-	return self.pos.y - love.math.random(20, IMG.bucket:getWidth() + 20)
+	return self.pos.y - love.math.random(20, self.image:getWidth() + 20)
 end
 
 function Bucket:update(dt)
@@ -46,10 +38,10 @@ function Bucket:update(dt)
 	end
 
 	if love.keyboard.isDown("left", "a") then
-		self.pos.x = self.pos.x - self.speedv*dt
+		self.pos.x = self.pos.x - self.speed_x*dt
 	end
 	if love.keyboard.isDown("right", "d") then
-		self.pos.x = self.pos.x + self.speedv*dt
+		self.pos.x = self.pos.x + self.speed_x*dt
 	end
 
 	-- jump
@@ -64,11 +56,11 @@ function Bucket:update(dt)
 		end
 	end
 
-	self.pos.y = self.pos.y + self.speed_y * dt + g * dt * dt / 2
-	self.speed_y = self.speed_y + g * dt
+	self.pos.y = self.pos.y + self.speed_y * dt + GRAVITY * dt * dt / 2
+	self.speed_y = self.speed_y + GRAVITY * dt
 
-	if self.pos.y > self.floor_y then
-		self.pos.y = self.floor_y
+	if self.pos.y > GAME_FLOOR then
+		self.pos.y = GAME_FLOOR
 		self.speed_y = 0
 		self.on_floor = true
 	end
@@ -79,8 +71,17 @@ end
 function Bucket:draw()
 
 	Color.set(Color.white())
-	love.graphics.draw(IMG.bucket, self.pos.x, self.pos.y)
+	love.graphics.draw(self.image, self.pos.x, self.pos.y)
 
+end
+
+--Create bucket and add it to layer 2 on draw tables
+function Bucket.new()
+
+	local bucket = Bucket(100, GAME_FLOOR)
+	bucket:addElement("L2", nil, "the_bucket")
+
+	return bucket
 end
 
 

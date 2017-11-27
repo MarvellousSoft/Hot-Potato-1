@@ -4,15 +4,17 @@ local state = {}
 
 --LOCAL VARIABLES--
 
+local time_to_drop = 1
+local tick = 0
+
 --LOCAL FUNCTIONS--
 
 --STATE FUNCTIONS--
 
 function state:enter()
 
-	--Create bucket and add it to layer 2 on draw tables
-	local bucket = Bucket(100, O_WIN_H * .9)
-	bucket:addElement("L2", nil, "the_bucket")
+	--Create bucket
+	Bucket.new()
 
 end
 
@@ -24,9 +26,16 @@ end
 
 
 function state:update(dt)
+	tick = tick + dt
+	while tick >= time_to_drop do
+		tick = tick - time_to_drop
+		local x = love.math.random(10, O_WIN_H - 10)
+		local y = 30
+		Drop.new(x, y)
+	end
 
-	Util.updateId(dt, "the_bucket")
-	Util.updateSubtype(dt, "auto_update")
+
+	Util.updateDrawTable(dt)
 
 	Util.destroyAll()
 

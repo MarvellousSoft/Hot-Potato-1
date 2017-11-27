@@ -133,6 +133,15 @@ function util.updateId(dt, id)
 
 end
 
+--Update all objects in the draw tables
+function util.updateDrawTable(dt)
+
+	for _,T in pairs(DRAW_TABLE) do
+		util.updateTable(dt, T)
+	end
+
+end
+
 --Update all timers
 function util.updateTimers(dt)
 

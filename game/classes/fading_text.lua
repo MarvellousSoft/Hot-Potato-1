@@ -43,7 +43,7 @@ end
 -- Create a fading text and add it to the drawing and update tables
 function FadingText.new(x, y, txt)
 	local f = FONTS.default
-	FadingText(x - f:getWidth(txt) / 2, y, txt):addElement("L1", "auto_update")
+	FadingText(x - f:getWidth(txt) / 2, y, txt):addElement("L1")
 end
 
 

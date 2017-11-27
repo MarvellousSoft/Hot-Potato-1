@@ -22,6 +22,9 @@ function setup.config()
 	O_WIN_W = 960 --The original width of your game. Work with this value when using res_manager multiple resolutions support
 	O_WIN_H = 540 --The original height of your game. Work with this value when using res_manager multiple resolutions support
 
+	GRAVITY = 1000 --In-game gravity
+	GAME_FLOOR = O_WIN_H * .9 --Y position of game floor
+
 	--INITIALIZING TABLES--
 	--Drawing Tables
 	DRAW_TABLE = {
@@ -39,7 +42,9 @@ function setup.config()
 
 	--IMAGES--
 	IMG = { --Table containing all the images
-		bucket = love.graphics.newImage("assets/images/bucket.png")
+		empty_bucket = love.graphics.newImage("assets/images/empty_bucket.png"),
+		full_bucket = love.graphics.newImage("assets/images/full_bucket.png"),
+		drop = love.graphics.newImage("assets/images/drop.png"),
 	}
 
 	--FONTS--
