@@ -43,6 +43,9 @@ end
 
 function state:draw()
 
+	Color.set(Color.black())
+	love.graphics.rectangle('fill', 0, GAME_FLOOR, O_WIN_W, O_WIN_H)
+
 	Draw.allTables()
 
 end

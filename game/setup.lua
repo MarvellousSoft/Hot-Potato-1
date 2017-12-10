@@ -18,6 +18,7 @@ function setup.config()
 
 	--GLOBAL VARIABLES--
 	DEBUG = true --DEBUG mode status
+	SHOW_HITBOX = false -- show hitboxes for elements
 
 	O_WIN_W = 960 --The original width of your game. Work with this value when using res_manager multiple resolutions support
 	O_WIN_H = 540 --The original height of your game. Work with this value when using res_manager multiple resolutions support

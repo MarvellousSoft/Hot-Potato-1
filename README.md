@@ -1,11 +1,12 @@
 # Hot Potato #1
 First attempt at a Hot Potato Game Jam
 
-## Current person holding the potato: YAN COUTO
+## Current person holding the potato: RENATO GEH
 
 ### Potato-List™ (Active people working on the game)
  - Ricardo Lira
  - Yan Couto
+ - Renato Geh
 
 #### About the Rules:
  - Only the person holding the potato can work on the Game

@@ -43,6 +43,7 @@ function Drop:update(dt)
 	self.pos.y = self.pos.y + self.speed_y * dt + GRAVITY * dt * dt / 2
 	self.speed_y = self.speed_y + GRAVITY * dt
 
+	if true then return end
 	--Check collision with bucket
 	local b = Util.findId("the_bucket")
 	if b then

@@ -48,4 +48,5 @@ function love.load()
 
 	Gamestate.switch(GS.GAME) --Jump to the inicial state
 
+	love.graphics.setBackgroundColor(255, 255, 255)
 end
