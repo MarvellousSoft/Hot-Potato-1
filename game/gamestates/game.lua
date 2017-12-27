@@ -58,6 +58,7 @@ function state:keypressed(key)
 		Util.defaultKeyPressed(key)
 	end
 
+    Util.findId("the_bucket"):keypressed(key)
 end
 
 --Return state functions

@@ -1,4 +1,6 @@
 local sodapop = require 'extra_libs/sodapop'
+local Eye = require 'classes/eye'
+
 --Bucket Class
 
 local Bucket = Class{
@@ -43,8 +45,18 @@ local Bucket = Class{
 		self.moving = false
 
 		self.tp = "bucket"
+
+        self.eyes_ref = {self.w/2, self.h/8+8} -- eyes positions relative to player's origin
+        self.eyes = {Eye.new(1), Eye.new(2)}
+        self.eye_bridge = 10
 	end
 }
+
+-- returns the position of the player's eyes
+local function eyes_pos(self, p)
+    local d = p==1 and self.eye_bridge or -self.eye_bridge
+    return self.pos.x + self.eyes_ref[1] + d, self.pos.y + self.eyes_ref[2]
+end
 
 -- return a x position next to the object
 local function x_near(self)
@@ -59,7 +71,7 @@ end
 function Bucket:update(dt)
 	self.anim:update(dt)
 
-	if not love.keyboard.isDown('left', 'a', 'right', 'd') then
+	if not love.keyboard.isDown('a', 'd') then
 		if self.moving and self.on_floor then
 			self.anim:switch('idle')
 		end
@@ -72,17 +84,17 @@ function Bucket:update(dt)
 		FadingText.new(x_near(self), y_near(self), "*running*")
 	end
 
-	if love.keyboard.isDown("left", "a") then
+	if love.keyboard.isDown("a") then
 		self.pos.x = self.pos.x - self.speed_x * dt
 		self.anim.flipX = true
 	end
-	if love.keyboard.isDown("right", "d") then
+	if love.keyboard.isDown("d") then
 		self.pos.x = self.pos.x + self.speed_x * dt
 		self.anim.flipX = false
 	end
 
 	-- jump
-	if love.keyboard.isDown("up", "space", "w") and (self.on_floor or (self.jumps_left > 0 and self.speed_y > -200)) then
+	if love.keyboard.isDown("w") and (self.on_floor or (self.jumps_left > 0 and self.speed_y > -200)) then
 		FadingText.new(x_near(self), y_near(self), "*jump*")
 		self.speed_y = -500
 		if self.on_floor then
@@ -110,7 +122,10 @@ function Bucket:update(dt)
 		self.on_floor = true
 	end
 
-
+    for i=1,2 do
+        self.eyes[i]:update_pos(eyes_pos(self, i)) -- update eyes positions
+        self.eyes[i]:update(dt)
+    end
 end
 
 function Bucket:draw()
@@ -121,6 +136,12 @@ function Bucket:draw()
 		love.graphics.rectangle('line', self.pos.x, self.pos.y, self.w, self.h)
 	end
 
+    for i=1,2 do self.eyes[i]:draw() end
+end
+
+
+function Bucket:keypressed(key, scode, isrepeat)
+    for i=1,2 do self.eyes[i]:keypressed(key, scode, isrepeat) end
 end
 
 --Create bucket and add it to layer 2 on draw tables
@@ -131,6 +152,5 @@ function Bucket.new()
 
 	return bucket
 end
-
 
 return Bucket

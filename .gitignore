@@ -1,3 +1,7 @@
+# Vim stuff
+*.vim
+.lvimrc
+
 # Compiled Lua sources
 luac.out
 
