@@ -1,15 +1,18 @@
-local sodapop = require 'extra_libs/sodapop'
-local Eye = require 'classes/eye'
+local sodapop    = require 'extra_libs.sodapop'
+local Class      = require 'extra_libs.hump.class'
+local DRAWABLE   = require 'classes.primitives.drawable'
+local Color      = require 'classes.color.color'
+local Eye        = require 'classes.eye'
+local FadingText = require 'classes.fading_text'
 
 --Bucket Class
 
 local Bucket = Class{
-	__includes = {ELEMENT, POS},
+	__includes = {DRAWABLE},
 	init = function(self, x, y)
 		self.w, self.h = 110, 220
 		y = y - self.h
-		ELEMENT.init(self)
-		POS.init(self, x, y)
+		DRAWABLE.init(self, x, y)
 
 		self.anim = sodapop.newAnimatedSprite(0, 0)
 		self.anim:addAnimation('idle', {
@@ -148,7 +151,7 @@ end
 function Bucket.new()
 
 	local bucket = Bucket(100, GAME_FLOOR)
-	bucket:addElement("L2", nil, "the_bucket")
+	bucket:register("L2", nil, "the_bucket")
 
 	return bucket
 end

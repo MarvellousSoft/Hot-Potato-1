@@ -5,7 +5,7 @@ local Hsl = require "classes.color.hsl"
 --Wrapper to properly handle HSV or RGB colors
 
 local color_funcs = {}
-local Default = "HSL" --Default mode for colors in this program.
+local Default = "RGB" --Default mode for colors in this program.
 
 --Returns a new color, given its 4 basic values: (hue, saturation, lightness and alpha) or (red, green, blue and alpha).
 --You can provide the type, or else it will use the default type
@@ -67,7 +67,7 @@ function color_funcs.convert(c)
     if c.tp == "HSL" then
         local r,g,b,a = Hsl.convert(c.h, c.s, c.l, c.a)
         return RGB(r,g,b,a)
-    elseif c.tp == "RBB" then
+    elseif c.tp == "RGB" then
         local h,s,l,a = Rgb.convert(c.r, c.g, c.b, c.a)
         return HSL(h,s,l,a)
     end

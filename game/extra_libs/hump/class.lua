@@ -84,10 +84,10 @@ end
 -- interface for cross class-system compatibility (see https://github.com/bartbes/Class-Commons).
 if class_commons ~= false and not common then
 	common = {}
-	function common.class(name, prototype, parent)
+	function class(name, prototype, parent)
 		return new{__includes = {prototype, parent}}
 	end
-	function common.instance(class, ...)
+	function instance(class, ...)
 		return class(...)
 	end
 end

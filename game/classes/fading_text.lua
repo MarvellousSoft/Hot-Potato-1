@@ -1,3 +1,7 @@
+local Class    = require 'extra_libs.hump.class'
+local DRAWABLE = require 'classes.primitives.drawable'
+local Color    = require 'classes.color.color'
+
 -- Fading Text Class
 
 -- Text that rotates and scales randonmly, and disappears automatically
@@ -43,7 +47,7 @@ end
 -- Create a fading text and add it to the drawing and update tables
 function FadingText.new(x, y, txt)
 	local f = FONTS.default
-	FadingText(x - f:getWidth(txt) / 2, y, txt):addElement("L1")
+	FadingText(x - f:getWidth(txt) / 2, y, txt):register("L1")
 end
 
 

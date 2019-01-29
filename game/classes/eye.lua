@@ -1,3 +1,7 @@
+local Class = require 'extra_libs.hump.class'
+local Color = require "classes.color.color"
+local POS   = require 'classes.primitives.pos'
+
 local SENSITIVITY = 2
 
 local function up(self)
@@ -45,6 +49,7 @@ function Eye:update_pos(x, y)
 end
 
 function Eye:shoot()
+
     print("Player "..self.p..
         " does a Pew! from position ["..self.pos.x..", "..self.pos.y.."] to position "..
         "["..self.cursor.x..", "..self.cursor.y.."]")

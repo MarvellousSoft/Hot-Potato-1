@@ -1,3 +1,9 @@
+local Util   = require 'util'
+local Draw   = require 'draw'
+local Bucket = require 'classes.bucket'
+local Drop   = require 'classes.drop'
+local Color  = require 'classes.color.color'
+
 --MODULE FOR THE GAMESTATE: GAME--
 
 local state = {}

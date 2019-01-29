@@ -1,3 +1,8 @@
+local Class    = require 'extra_libs.hump.class'
+local Color    = require 'classes.color.color'
+local Util     = require 'util'
+local DRAWABLE = require 'classes.primitives.drawable'
+
 --Drop of liquid Class
 
 local Drop = Class{
@@ -87,7 +92,7 @@ end
 function Drop.new(x, y)
 
 	local drop = Drop(x,y)
-	drop:addElement("L2", "drops")
+	drop:register("L2", "drops")
 
 	return drop
 end

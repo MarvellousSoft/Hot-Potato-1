@@ -1,33 +1,12 @@
---HUMP STUFF
-Gamestate = require "extra_libs.hump.gamestate"
-Timer     = require "extra_libs.hump.timer"
-Class     = require "extra_libs.hump.class"
-Camera    = require "extra_libs.hump.camera"
-Vector    = require "extra_libs.hump.vector"
 
-
---CLASSES
-
-require "classes.primitive"
-Color   = require "classes.color.color"
-Bucket  = require "classes.bucket"
-FadingText = require "classes.fading_text"
-Drop    = require "classes.drop"
-
-
---MY MODULES
-Util      = require "util"
-Draw      = require "draw"
-Setup     = require "setup"
-Font      = require "font"
-Res       = require "res_manager"
-
-
+local Gamestate = require 'extra_libs.hump.gamestate'
+local Setup = require 'setup'
+local Res = require 'res_manager'
 
 
 --GAMESTATES
 GS = {
-	GAME     = require "gamestates.game",     --Game Gamestate
+	GAME = require "gamestates.game",     --Game Gamestate
 }
 
 ------------------
